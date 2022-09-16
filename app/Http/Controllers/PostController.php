@@ -5,28 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use Livewire\WithPagination;
 
 class PostController extends Controller
 {
 
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
-
     public function index()
     {
-
-        // $title = '';
-        // if (request('category')) {
-        //     $category = Category::fristWhere('slug', request('category'));
-        //     $title = ' in ' . $category->name;
-        // }
-
-        // if (request('user')) {
-        //     $author = User::fristWhere('username', request('user'));
-        //     $title = ' in ' . $author->name;
-        // }
 
         return view('posts', [
             "title" => "All Posts",

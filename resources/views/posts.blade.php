@@ -7,11 +7,11 @@
 <div class="row justify-content-center mb-3">
     <div class="col-md-6">
         <form action="/posts">
+            @if (request('category'))
+            <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
             @if (request('user'))
                 <input type="hidden" name="user" value="{{ request('user') }}">
-            @endif
-            @if (request('category'))
-                <input type="hidden" name="category" value="{{ request('category') }}">
             @endif
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
@@ -60,7 +60,7 @@
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $post->title }}</h5>
-                        <p><small class="text-muted">By. <a href="/posts?user={{ $post->user->username }}"class="text-decoration-none">{{ $post->user->name }}</a> {{ $post->created_at->diffForHumans() }} </small>
+                        <p><small class="text-muted">By. <a href="/posts?user={{ optional($post->user)->username }}"class="text-decoration-none">{{ optional($post->user)->name }}</a> {{ $post->created_at->diffForHumans() }}</small>
                         </p>
                         <p class="card-text">{{ $post->excerpt }}</p>
                         <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More</a>
