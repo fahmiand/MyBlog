@@ -11,6 +11,8 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
+    protected $fillabel = ['name', 'slug'];
+
     public function posts()
     {
         return $this->hasMany(Post::class);

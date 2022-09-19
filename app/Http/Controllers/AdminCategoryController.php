@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -27,7 +28,9 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.categories.postCategory.index', [
+            'posts' => Category::all()
+        ]);
     }
 
     /**
@@ -38,7 +41,15 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return ($request);
+        $validate = $request->validate([
+            'name' => 'required|unique:categories',
+            'slug' => 'required|unique:categories'
+        ]);
+
+        Category::create($validate);
+
+        return redirect('/dashboard/categories')->with('success', 'Category Sudah Ditambahkan!');
     }
 
     /**

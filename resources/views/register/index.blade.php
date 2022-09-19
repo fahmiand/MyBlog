@@ -58,8 +58,6 @@
 
                 <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Register</button>
             </form>
-
-            <small class="mt-3">Jika punya akun silakan login <a href="/login">disini</a></small>
         </main>
     </div>
 </div>

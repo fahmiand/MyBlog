@@ -34,7 +34,7 @@
         <div class="card-body text-center">
             <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none text-dark">{{ $posts[0]->title }}</a></h3>
             <p>
-                <small class="text-muted">By. <a href="/posts?user={{ $posts[0]->user->username }}" class="text-decoration-none">{{ $posts[0]->user->name }}</a> in <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none">
+                <small class="text-muted">By. <a href="/posts?user={{ optional($posts[0]->user)->username }}" class="text-decoration-none">{{ optional($posts[0]->user)->name }}</a> in <a href="/posts?category={{ $posts[0]->category->slug }}" class="text-decoration-none">
                 {{ $posts[0]->category->name }}
             </a> {{ $posts[0]->created_at->diffForHumans() }}
                 </small>

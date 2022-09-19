@@ -32,7 +32,6 @@
 
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
             </form>
-            <small class="mt-3">Silahkan registrasi <a href="/register">disini</a></small>
         </main>
     </div>
 </div>
