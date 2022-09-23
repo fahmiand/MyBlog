@@ -60,7 +60,6 @@ class AdminCategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
     }
 
     /**
@@ -71,7 +70,10 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit', [
+            'category' => $category,
+            'post' => Post::all()
+        ]);
     }
 
     /**
