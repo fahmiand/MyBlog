@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Category;
 
 class PostController extends Controller
@@ -38,15 +37,6 @@ class PostController extends Controller
         ]);
     }
 
-    // public function category(Category $category)
-    // {
-    //     return view('posts', [
-    //         'title' => "Post by Category : $category->name",
-    //         "active" => "categories",
-    //         'posts' => $category->posts->load('category', 'user')
-    //     ]);
-    // }
-
     public function categories()
     {
         return view('categories', [
@@ -54,13 +44,4 @@ class PostController extends Controller
             'categories' => Category::all()
         ]);
     }
-
-    // public function authors(User $author)
-    // {
-    //     return view('posts', [
-    //         'title' => "Post by Author : $author->name",
-    //         'active' => 'posts',
-    //         'posts' => $author->posts->load('category', 'user')
-    //     ]);
-    // }
 }

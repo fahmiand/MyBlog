@@ -12,23 +12,30 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="/posts">Blog</a>
+                </li> --}}
+                {{-- <li class="nav-item">
+                    <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Category</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('products') ? 'active' : '' }}" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Category</a>
+                    <a class="nav-link {{ Request::is('categoriesProducts') ? 'active' : '' }}" href="/categoriesProducts">Category Products</a>
                 </li>
             </ul>
-
-            {{-- <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto">
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         selamat satang, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> Dasboard</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            @can('admin')
+                                <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> Dasboard</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endcan
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf
@@ -42,7 +49,7 @@
                         <a href="/login" class="nav-link {{ Request::is('login') ? 'active' : '' }}"><i class="bi bi-box-arrow-in-right"></i>Login</a>
                     </li>
                 @endauth
-            </ul> --}}
+            </ul>
         </div>
     </div>
 </nav>

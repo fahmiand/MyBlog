@@ -21,32 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'ahmad Fahmi Andrian',
             'username' => 'fahmi',
             'email' => 'Fahmi12@gmail.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'is_admin' => 1
         ]);
-
 
         User::factory(3)->create();
 
-        Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming'
-        ]);
-
-        Category::create([
-            'name' => 'ayam',
-            'slug' => 'ayam'
-        ]);
-
-        Category::create([
-            'name' => 'bebek',
-            'slug' => 'bebek'
-        ]);
-
-        Category::create([
-            'name' => 'ikan',
-            'slug' => 'ikan'
-        ]);
-
-        Post::factory(40)->create();
+        // Post::factory(40)->create();
     }
 }
