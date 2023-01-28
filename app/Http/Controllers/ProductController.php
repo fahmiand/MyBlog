@@ -14,4 +14,11 @@ class ProductController extends Controller
             'items' => Product::all()
         ]);
     }
+
+    public function checkOut()
+    {
+        return view('product.checkout', [
+            'title' => 'Chek Out'
+        ]);
+    }
 }

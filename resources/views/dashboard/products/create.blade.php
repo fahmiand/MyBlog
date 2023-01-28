@@ -62,11 +62,11 @@
 </div>
 
 <script>
-    const title = document.querySelector('#name');
+    const name = document.querySelector('#name');
     const slug = document.querySelector('#slug');
 
-    title.addEventListener('change', function(){
-        fetch('/items/checkSlug?name=' + title.value)
+    name.addEventListener('change', function(){
+        fetch('/items/checkSlug?name=' + name.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
     });

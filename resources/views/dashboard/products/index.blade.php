@@ -14,21 +14,19 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">nama</th>
-            <th scope="col">Description</th>
             <th scope="col">Jumlah</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @foreach ($items as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{!! $product->description !!}</td>
-                    <td>{{ $product->jumlah }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->jumlah }}</td>
                     <td>
-                        <a href="/items/{{ $product->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                        <form action="/items/{{ $product->id }}" method="post" class="d-inline">
+                        <a href="/items/{{ $item->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
+                        <form action="/items/{{ $item->slug }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
                             <button class="badge bg-danger border-0" onclick="return confirm('Apakah kamu yakin?')"><span data-feather="x-circle"></button>

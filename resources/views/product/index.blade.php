@@ -15,8 +15,8 @@
                             <h4>jumlah = {{ $item->jumlah }}</h4>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="btn btn-primary">Keranjang</a>
-                            <a href="#" class="btn btn-primary">Beli</a>
+                            <a href="" class="btn btn-primary">Keranjang</a>
+                            <a href="/checkOut" class="btn btn-primary">Beli</a>
                         </div>
                     </div>
                 </div>

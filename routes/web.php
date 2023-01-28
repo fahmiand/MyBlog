@@ -62,3 +62,5 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::resource('/items', DashboardProductController::class)->middleware('admin');
 
 Route::get('/products', [ProductController::class, 'index']);
+
+Route::get('/checkOut', [ProductController::class, 'checkOut']);

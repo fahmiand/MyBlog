@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/css/signin.css">
 
     <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/css/form-validation.css">
     
     <title>Fahmi Blog | {{ $title }}</title>
 </head>
@@ -31,7 +33,7 @@
         <nav class="navbar">
             <a href="/">Home</a>
             <a href="/products">Products</a>
-            <a href="/categories">Categories</a>
+            <a href="/products/categories">Categories</a>
             {{-- <a href="/posts">blogs</a> --}}
         </nav>
     
@@ -114,5 +116,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="/js/script.js"></script>
+<script src="/js/form-validation.js"></script>
 </body>
 </html>

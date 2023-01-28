@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Directory;
 
 class DashboardProductController extends Controller
 {
@@ -16,7 +18,7 @@ class DashboardProductController extends Controller
     public function index()
     {
         return view('dashboard.products.index', [
-            'products' => Product::all()
+            'items' => Product::all()
         ]);
     }
 
@@ -40,6 +42,7 @@ class DashboardProductController extends Controller
     {
         $validateData = $request->validate([
             'name' => 'required|max:255',
+            'slug' => 'required',
             'description' => 'required',
             'image' => 'image|max:5024',
             'jumlah' => 'required'
@@ -64,7 +67,7 @@ class DashboardProductController extends Controller
     public function show(Product $product)
     {
         return view('dashboard.products.show', [
-            'product' => $product
+            'items' => $product
         ]);
     }
 
@@ -77,7 +80,7 @@ class DashboardProductController extends Controller
     public function edit(Product $product)
     {
         return view('dashboard.products.edit', [
-            'product' => $product
+            'item' => $product
         ]);
     }
 
@@ -90,7 +93,29 @@ class DashboardProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'image' => 'image|file|max:2024',
+            'description' => 'required'
+        ];
+
+        if ($request->slug != $product->slug) {
+            $rules['slug'] = 'required|unique:posts';
+        }
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('post-images');
+        }
+
+        Product::where('id', $product->id)
+            ->update($validateData);
+
+        return redirect('/items')->with('success', 'Item hes been edit');
     }
 
     /**
@@ -101,12 +126,15 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+
+        Product::destroy($product->id);
+
+        return redirect('/items')->with('success', 'Item hes been Delet');
     }
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->name);
         return response()->json(['slug' => $slug]);
     }
 }
